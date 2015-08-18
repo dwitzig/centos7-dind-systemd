@@ -1,7 +1,8 @@
 [Unit]
 Description=wrapdocker
-Requires=basic.target
-After=basic.target
+# Requires=basic.target
+# After=basic.target
+Type=idle
 
 [Service]
 Type=oneshot

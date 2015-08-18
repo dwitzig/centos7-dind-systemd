@@ -14,8 +14,9 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN yum -y install docker
 
-VOLUME [ "/sys/fs/cgroup" ]
-VOLUME /var/lib/docker
+
+VOLUME [ "/sys/fs/cgroup", "/var/lib/docker" ]
+# VOLUME /var/lib/docker
 
 ADD ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
@@ -23,4 +24,4 @@ RUN chmod +x /usr/local/bin/wrapdocker
 ADD wrapdocker.service /etc/systemd/system/wrapdocker.service
 RUN systemctl enable wrapdocker.service
 
-ENTRYPOINT ["/usr/sbin/init"]
+# CMD ["/usr/sbin/init"]
